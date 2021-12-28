@@ -1,2 +1,2 @@
 # dare.io-pbl
-this is where i keep all my dare.io projects
+This is where I keep all my dare.io projects
