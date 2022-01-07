@@ -248,7 +248,9 @@ Removed the file created using below command, as it contains sensitive informati
 
 ![test 17](https://user-images.githubusercontent.com/96151001/148604551-13997e3c-7911-4026-b8b4-7017c796940d.PNG)
 
-Refresh the page in the browser, output shows the file created has been removed.  
+Refresh the page in the browser, output shows the file created has been removed
+
+![test 18](https://user-images.githubusercontent.com/96151001/148605228-4bfb9f02-a6df-4040-8dc6-bfc7c9b904dc.PNG)
 
 
   
