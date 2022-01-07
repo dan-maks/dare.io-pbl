@@ -234,7 +234,11 @@ Add the below text, which is valid PHP code, inside the blank file opened by the
     phpinfo();  
 
 
+When you are finished, save and close the file
 
+![test 15](https://user-images.githubusercontent.com/96151001/148601680-fa1598ea-218f-40fd-9cab-813607720264.PNG)
+
+Refresh the page on the browser, the output shows that PHP installatiom is working as expected 
 
   
 
