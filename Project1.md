@@ -134,6 +134,8 @@ The below screen shot is the output which shows the Virtual host is working perf
   
 ![HELLO LAMP](https://user-images.githubusercontent.com/96151001/148588756-196eb40e-0ba2-4f52-93f6-15fb05b4cdd6.PNG)  
   
+## Step 5 - Enable PHP on the Website   
+  
   
   
   
