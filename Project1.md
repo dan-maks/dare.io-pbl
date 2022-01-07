@@ -132,6 +132,8 @@ $ sudo echo 'Hello LAMP from hostname' $(curl -s http://169.254.169.254/latest/m
   
 The below screen shot is the output which shows the Virtual host is working perfecttly 
   
+![HELLO LAMP](https://user-images.githubusercontent.com/96151001/148588756-196eb40e-0ba2-4f52-93f6-15fb05b4cdd6.PNG)  
+  
   
   
   
