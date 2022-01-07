@@ -89,7 +89,7 @@ Pasted the below bare-bones configuration by hitting on i on the keyboard to ent
     ServerAdmin webmaster@localhost
     DocumentRoot /var/www/projectlamp
     ErrorLog ${APACHE_LOG_DIR}/error.log
-    CustomLog ${APACHE_LOG_DIR}/access.log combined
+    CustomLog ${APACHE_LOG_DIR}/access.log combined 
   </VirtualHost> 
   
   ### To save and close the file, simply follow the steps below:
@@ -97,7 +97,7 @@ Pasted the below bare-bones configuration by hitting on i on the keyboard to ent
   1. Hit the esc button on the keyboard
   
   2. Type :
-  
+ 
   3. Type wq. w for write and q for quit
   
   4. Hit ENTER to save the file
@@ -205,12 +205,14 @@ We needed to edit the /etc/apache2/mods-enabled/dir.conf file and change the ord
 $ sudo vim /etc/apache2/mods-enabled/dir.conf
   
   
-  <IfModule mod_dir.c>
+    <IfModule mod_dir.c>
         #Change this:
         #DirectoryIndex index.html index.cgi index.pl index.php index.xhtml index.htm
         #To this:
         DirectoryIndex index.php index.html index.cgi index.pl index.xhtml index.htm
-  </IfModule>  
+    </IfModule>  
+  
+  
   
   
   
