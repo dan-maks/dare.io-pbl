@@ -25,6 +25,13 @@ Output to check if we can access apache2 locally it the ubuntu shell, run the co
 
 $ curl http://localhost:80
 
+![test 5](https://user-images.githubusercontent.com/96151001/148566312-b88ae9f0-40a7-4dc4-9926-788147caa910.PNG
+
+Test how Apache HTTP server can respond to requests from the Internet, open a web browser and try access the url
+
+http://<Public-IP-Address>:80
+  
+
 
 
 
