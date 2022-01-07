@@ -225,7 +225,7 @@ $ sudo systemctl reload apache2
   
 Created a new file named index.php inside the custom web root folder 
   
-$ vim /var/www/projectlamp/index.php  
+    $ vim /var/www/projectlamp/index.php  
   
 Add the below text, which is valid PHP code, inside the blank file opened by the code 
   
