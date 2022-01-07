@@ -229,8 +229,10 @@ $ vim /var/www/projectlamp/index.php
   
 Add the below text, which is valid PHP code, inside the blank file opened by the code 
   
-<?php
-phpinfo();  
+  <?php
+  phpinfo();  
+
+
   
 
    
