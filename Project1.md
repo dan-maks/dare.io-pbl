@@ -21,6 +21,11 @@ Opened TCP port 80 in the EC2 instance which is the default port that web browse
 
 ![test 2](https://user-images.githubusercontent.com/96151001/148563143-11ac8464-3f22-4af6-b42f-abb6ccd280aa.PNG)
 
+Output to check if we can access apache2 locally it the ubuntu shell, run the command
+
+$ curl http://localhost:80
+
+
 
 
 
