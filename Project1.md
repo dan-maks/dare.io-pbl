@@ -92,7 +92,7 @@ Pasted the below bare-bones configuration by hitting on i on the keyboard to ent
     CustomLog ${APACHE_LOG_DIR}/access.log combined
   </VirtualHost> 
   
-  ## To save and close the file, simply follow the steps below:
+  ### To save and close the file, simply follow the steps below:
   
   1. Hit the esc button on the keyboard
   
