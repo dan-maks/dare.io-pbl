@@ -32,6 +32,10 @@ Test how Apache HTTP server can respond to requests from the Internet, open a we
 http://<Public-IP-Address>:80
   
 ![apache browser test](https://user-images.githubusercontent.com/96151001/148567708-6ef6e9c9-1920-4aa9-bdf5-27812ff1a79f.PNG)
+  
+LAMP stack has been installed completely and it is fully operational
+  
+## Step 4 - Creating a Virtual Host for your Website using Apache 
     
 ## Step 2 - Installing MySQL
 
@@ -63,4 +67,4 @@ Once the installation is finished, the following command confirms the PHP versio
   
 $ php -v  
   
-  
+![test 9](https://user-images.githubusercontent.com/96151001/148576767-3bc85d03-1a9d-4e09-ac00-29a7762b4914.PNG)  
