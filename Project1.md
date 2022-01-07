@@ -213,6 +213,15 @@ $ sudo vim /etc/apache2/mods-enabled/dir.conf
     </IfModule>  
   
   
+![test 13](https://user-images.githubusercontent.com/96151001/148597796-3c5bd250-d9c4-43ae-816f-6926d69c30e3.PNG)
+  
+After saving and closing the file, use the below command to reload Apache so the changes take effect 
+  
+$ sudo systemctl reload apache2
+  
+  
+  
+  
   
   
   
