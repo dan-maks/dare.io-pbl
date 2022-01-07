@@ -136,6 +136,16 @@ The below screen shot is the output which shows the Virtual host is working perf
   
 ## Step 5 - Enable PHP on the Website   
   
+We needed to edit the /etc/apache2/mods-enabled/dir.conf file and change the order in which the index.php file is listed within the DirectoryIndex directive so as to allow the php page be the landing page 
+
+$ sudo vim /etc/apache2/mods-enabled/dir.conf
+  
+<IfModule mod_dir.c>
+        #Change this:
+        #DirectoryIndex index.html index.cgi index.pl index.php index.xhtml index.htm
+        #To this:
+        DirectoryIndex index.php index.html index.cgi index.pl index.xhtml index.htm
+</IfModule>  
   
   
   
