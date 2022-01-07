@@ -51,6 +51,6 @@ The command below test if I'm able to log in to the MySQL console
   
 $ sudo mysql
   
-  
+![test 8](https://user-images.githubusercontent.com/96151001/148574390-0029fa56-5101-4704-a579-48b5c1f987ab.PNG)  
   
   
