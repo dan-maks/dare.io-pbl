@@ -33,7 +33,11 @@ http://<Public-IP-Address>:80
   
 ![apache browser test](https://user-images.githubusercontent.com/96151001/148567708-6ef6e9c9-1920-4aa9-bdf5-27812ff1a79f.PNG)
 
+## Step 2 - Installing MySQL
 
-
-
+The below command installs the MySQL in the server 
+  
+$ sudo apt install mysql-server
+  
+  
 
