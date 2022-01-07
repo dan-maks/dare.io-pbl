@@ -29,7 +29,7 @@ Output to check if we can access apache2 locally it the ubuntu shell, run the co
 
 Test how Apache HTTP server can respond to requests from the Internet, open a web browser and try access the url
 
-http://<Public-IP-Address>:80
+    http://<Public-IP-Address>:80
   
 ![apache browser test](https://user-images.githubusercontent.com/96151001/148567708-6ef6e9c9-1920-4aa9-bdf5-27812ff1a79f.PNG)
     
