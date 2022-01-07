@@ -118,13 +118,22 @@ $ sudo a2dissite 000-default
   
 Ran the below command to make sure your configuration file doesn’t contain syntax errors
   
-$ sudo apache2ctl configtest  
+$ sudo apache2ctl configtest
   
+![test 11](https://user-images.githubusercontent.com/96151001/148587089-08d7b032-b454-4b10-8914-34bee0a5be51.PNG)
   
-  
-Finally, reload Apache so these changes take effect
+Finally, used the below command to reload Apache so these changes take effect
   
 $ sudo systemctl reload apache2  
+ 
+Created an index.html file in the /var/www/projectlamp to test if the virtual host works as expected
+  
+$ sudo echo 'Hello LAMP from hostname' $(curl -s http://169.254.169.254/latest/meta-data/public-hostname) 'with public IP' $(curl -s http://169.254.169.254/latest/meta-data/public-ipv4) > /var/www/projectlamp/index.html 
+  
+The below screen shot is the output which shows the Virtual host is working perfecttly 
+  
+  
+  
   
   
   
