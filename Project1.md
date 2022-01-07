@@ -45,5 +45,10 @@ The below command runs a security script that removes some insecure default sett
   
 $ sudo mysql_secure_installation
   
-  
+![test 7](https://user-images.githubusercontent.com/96151001/148572631-fd2282a4-ff25-41a6-bcbb-a547b11a61f7.PNG)  
 
+The command below test if we can log in to the MySQL console
+  
+$ sudo mysql
+  
+  
