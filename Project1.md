@@ -5,15 +5,15 @@
 
 The below command update a list of packages in package manager
 
-$ sudo apt update
+    $ sudo apt update
 
 The below command runs apache2 package installation 
 
-$ sudo apt install apache2
+    $ sudo apt install apache2
 
 This code verifies that apache2 is running as a service in my server 
 
-$ sudo systemctl status apache2
+    $ sudo systemctl status apache2
 
 ![test 4](https://user-images.githubusercontent.com/96151001/148561654-24566200-3aa5-4103-a08e-e04db33671b9.PNG)
 
@@ -23,7 +23,7 @@ Opened TCP port 80 in the EC2 instance which is the default port that web browse
 
 Output to check if we can access apache2 locally it the ubuntu shell, run the command
 
-$ curl http://localhost:80
+    $ curl http://localhost:80
 
 ![test 5](https://user-images.githubusercontent.com/96151001/148568320-f63d1354-4234-43ce-a4b9-7336e8a9339c.PNG)
 
@@ -37,19 +37,19 @@ http://<Public-IP-Address>:80
 
 The below command installs the MySQL in the server 
   
-$ sudo apt install mysql-server
+    $ sudo apt install mysql-server
   
 ![test 6](https://user-images.githubusercontent.com/96151001/148570545-49a4dc5c-14be-4d2b-991a-aa100f1f94c2.PNG)  
   
 The below command runs a security script that removes some insecure default settings and lockdowm acccess to the database system
   
-$ sudo mysql_secure_installation
+    $ sudo mysql_secure_installation
   
 ![test 7](https://user-images.githubusercontent.com/96151001/148572631-fd2282a4-ff25-41a6-bcbb-a547b11a61f7.PNG)  
 
 The command below test if I'm able to log in to the MySQL console
   
-$ sudo mysql
+    $ sudo mysql
   
 ![test 8](https://user-images.githubusercontent.com/96151001/148574390-0029fa56-5101-4704-a579-48b5c1f987ab.PNG)  
   
@@ -57,11 +57,11 @@ $ sudo mysql
     
 The command below installs php, php-mysql and libapache2-mod-php 
   
-$ sudo apt install php libapache2-mod-php php-mysql  
+    $ sudo apt install php libapache2-mod-php php-mysql  
   
 Once the installation is finished, the following command confirms the PHP version
   
-$ php -v  
+    $ php -v  
   
 ![test 9](https://user-images.githubusercontent.com/96151001/148576767-3bc85d03-1a9d-4e09-ac00-29a7762b4914.PNG) 
   
@@ -71,15 +71,15 @@ LAMP stack has been installed completely and it is fully operational
   
 Created a directory for projectlammp using 'mkdir' command
   
-$ sudo mkdir /var/www/projectlamp  
+    $ sudo mkdir /var/www/projectlamp  
   
 Assigned ownership to the directory with this variable $USER which still referenced the current system user  
   
-$ sudo chown -R $USER:$USER /var/www/projectlamp 
+    $ sudo chown -R $USER:$USER /var/www/projectlamp 
   
 Created and opened a new configuration file in Apache’s sites-available directory using 'vi' command line editor
   
-$ sudo vi /etc/apache2/sites-available/projectlamp.conf 
+    $ sudo vi /etc/apache2/sites-available/projectlamp.conf 
   
 Pasted the below bare-bones configuration by hitting on i on the keyboard to enter the insert mode, and pasted the text
   
@@ -106,34 +106,34 @@ Pasted the below bare-bones configuration by hitting on i on the keyboard to ent
   
 Used the below command to show the new file we created in the sites-available directory 
   
-$ sudo ls /etc/apache2/sites-available
+    $ sudo ls /etc/apache2/sites-available
   
 ![test 10](https://user-images.githubusercontent.com/96151001/148584020-d953078c-157e-4f59-8955-7879ea49eac5.PNG)  
   
 Enabled the new virtualhost created with the below 
   
-$ sudo a2ensite projectlamp
+    $ sudo a2ensite projectlamp
   
 Disabled the default website that comes installed with Apache with the below command
   
-$ sudo a2dissite 000-default
+    $ sudo a2dissite 000-default
   
 Ran the below command to make sure your configuration file doesn’t contain syntax errors
   
-$ sudo apache2ctl configtest
+    $ sudo apache2ctl configtest
   
 ![test 11](https://user-images.githubusercontent.com/96151001/148587089-08d7b032-b454-4b10-8914-34bee0a5be51.PNG)
   
 Finally, used the below command to reload Apache so these changes take effect
   
-$ sudo systemctl reload apache2  
+    $ sudo systemctl reload apache2  
  
 Created an index.html file in the /var/www/projectlamp to test if the virtual host works as expected
   
-$ sudo echo 'Hello LAMP from hostname' $(curl -s http://169.254.169.254/latest/meta-data/public-hostname) 'with public IP' $(curl -s http://169.254.169.254/latest/meta-data/public-ipv4) > /var/www/projectlamp/index.html 
+    $ sudo echo 'Hello LAMP from hostname' $(curl -s http://169.254.169.254/latest/meta-data/public-hostname) 'with public IP' $(curl -s http://169.254.169.254/latest/meta-   data/public-ipv4) > /var/www/projectlamp/index.html 
   
 The below screen shot is the output which shows the Virtual host is working perfecttly 
-  
+   
 ![HELLO LAMP](https://user-images.githubusercontent.com/96151001/148588756-196eb40e-0ba2-4f52-93f6-15fb05b4cdd6.PNG)  
   
   
@@ -204,7 +204,7 @@ The below screen shot is the output which shows the Virtual host is working perf
 We needed to edit the /etc/apache2/mods-enabled/dir.conf file and change the order in which the index.php file is listed within the DirectoryIndex directive so as to allow the php page be the landing page 
 
   
-$ sudo vim /etc/apache2/mods-enabled/dir.conf
+    $ sudo vim /etc/apache2/mods-enabled/dir.conf
   
   
     <IfModule mod_dir.c>
@@ -219,7 +219,7 @@ $ sudo vim /etc/apache2/mods-enabled/dir.conf
   
 After saving and closing the file, use the below command to reload Apache so the changes take effect 
   
-$ sudo systemctl reload apache2
+    $ sudo systemctl reload apache2
   
 ![test 14](https://user-images.githubusercontent.com/96151001/148599170-2724358c-ef51-4f0a-b7da-c472d1bc10f6.PNG)  
   
@@ -234,11 +234,19 @@ Add the below text, which is valid PHP code, inside the blank file opened by the
     phpinfo();  
 
 
-When you are finished, save and close the file
+After completion, save and close the file
 
 ![test 15](https://user-images.githubusercontent.com/96151001/148601680-fa1598ea-218f-40fd-9cab-813607720264.PNG)
 
 Refresh the page on the browser, the output shows that PHP installatiom is working as expected 
+
+![test 16](https://user-images.githubusercontent.com/96151001/148602618-66c9d0d9-749e-49e6-a0e6-baddd39156ce.PNG)
+
+Removed the file created using below command, as it contains sensitive information about the PHP environment -and Ubuntu server
+
+    $ sudo rm /var/www/projectlamp/index.php
+
+
 
   
 
