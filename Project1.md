@@ -32,11 +32,7 @@ Test how Apache HTTP server can respond to requests from the Internet, open a we
 http://<Public-IP-Address>:80
   
 ![apache browser test](https://user-images.githubusercontent.com/96151001/148567708-6ef6e9c9-1920-4aa9-bdf5-27812ff1a79f.PNG)
-  
-The below command runs a security script that removes some insecure default settings and lockdowm acccess to the database system
-  
-$ sudo mysql_secure_installation  
-
+    
 ## Step 2 - Installing MySQL
 
 The below command installs the MySQL in the server 
@@ -44,4 +40,10 @@ The below command installs the MySQL in the server
 $ sudo apt install mysql-server
   
 ![test 6](https://user-images.githubusercontent.com/96151001/148570545-49a4dc5c-14be-4d2b-991a-aa100f1f94c2.PNG)  
+  
+The below command runs a security script that removes some insecure default settings and lockdowm acccess to the database system
+  
+$ sudo mysql_secure_installation
+  
+  
 
