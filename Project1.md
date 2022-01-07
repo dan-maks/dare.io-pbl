@@ -221,9 +221,20 @@ After saving and closing the file, use the below command to reload Apache so the
   
 $ sudo systemctl reload apache2
   
+![test 14](https://user-images.githubusercontent.com/96151001/148599170-2724358c-ef51-4f0a-b7da-c472d1bc10f6.PNG)  
   
+Created a new file named index.php inside the custom web root folder 
   
+$ vim /var/www/projectlamp/index.php  
   
+Add the below text, which is valid PHP code, inside the blank file opened by the code 
+  
+<?php
+phpinfo();  
+  
+
+   
+
   
   
   
