@@ -53,4 +53,14 @@ $ sudo mysql
   
 ![test 8](https://user-images.githubusercontent.com/96151001/148574390-0029fa56-5101-4704-a579-48b5c1f987ab.PNG)  
   
+## Step 3 - Installing PHP
+    
+The command below installs php, php-mysql and libapache2-mod-php 
+  
+$ sudo apt install php libapache2-mod-php php-mysql  
+  
+Once the installation is finished, the following command confirms the PHP version
+  
+$ php -v  
+  
   
