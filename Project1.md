@@ -104,10 +104,34 @@ Pasted the below bare-bones configuration by hitting on i on the keyboard to ent
   
 Used the below command to show the new file we created in the sites-available directory 
   
-$ sudo ls /etc/apache2/sites-available  
+$ sudo ls /etc/apache2/sites-available
+  
+![test 10](https://user-images.githubusercontent.com/96151001/148584020-d953078c-157e-4f59-8955-7879ea49eac5.PNG)  
+  
+Enabled the new virtualhost created with the below 
+  
+$ sudo a2ensite projectlamp
+  
+Disabled the default website that comes installed with Apache with the below command
+  
+$ sudo a2dissite 000-default
+  
+Ran the below command to make sure your configuration file doesn’t contain syntax errors
+  
+$ sudo apache2ctl configtest  
   
   
   
+Finally, reload Apache so these changes take effect
+  
+$ sudo systemctl reload apache2  
+  
+  
+  
+  
+  
+  
+
   
   
   
