@@ -32,10 +32,6 @@ Test how Apache HTTP server can respond to requests from the Internet, open a we
 http://<Public-IP-Address>:80
   
 ![apache browser test](https://user-images.githubusercontent.com/96151001/148567708-6ef6e9c9-1920-4aa9-bdf5-27812ff1a79f.PNG)
-  
-LAMP stack has been installed completely and it is fully operational
-  
-## Step 4 - Creating a Virtual Host for your Website using Apache 
     
 ## Step 2 - Installing MySQL
 
@@ -67,4 +63,54 @@ Once the installation is finished, the following command confirms the PHP versio
   
 $ php -v  
   
-![test 9](https://user-images.githubusercontent.com/96151001/148576767-3bc85d03-1a9d-4e09-ac00-29a7762b4914.PNG)  
+![test 9](https://user-images.githubusercontent.com/96151001/148576767-3bc85d03-1a9d-4e09-ac00-29a7762b4914.PNG) 
+  
+LAMP stack has been installed completely and it is fully operational  
+  
+## Step 4 - Creating a Virtual Host for your Website using Apache 
+  
+Created a directory for projectlammp using 'mkdir' command
+  
+$ sudo mkdir /var/www/projectlamp  
+  
+Assigned ownership to the directory with this variable $USER which still referenced the current system user  
+  
+$ sudo chown -R $USER:$USER /var/www/projectlamp 
+  
+Created and opened a new configuration file in Apache’s sites-available directory using 'vi' command line editor
+  
+$ sudo vi /etc/apache2/sites-available/projectlamp.conf 
+  
+Pasted the below bare-bones configuration by hitting on i on the keyboard to enter the insert mode, and pasted the text
+  
+  <VirtualHost *:80>
+    ServerName projectlamp
+    ServerAlias www.projectlamp 
+    ServerAdmin webmaster@localhost
+    DocumentRoot /var/www/projectlamp
+    ErrorLog ${APACHE_LOG_DIR}/error.log
+    CustomLog ${APACHE_LOG_DIR}/access.log combined
+  </VirtualHost> 
+  
+  ## To save and close the file, simply follow the steps below:
+  
+  1. Hit the esc button on the keyboard
+  
+  2. Type :
+  
+  3. Type wq. w for write and q for quit
+  
+  4. Hit ENTER to save the file
+  
+Used the below command to show the new file we created in the sites-available directory 
+  
+$ sudo ls /etc/apache2/sites-available  
+  
+  
+  
+  
+  
+  
+  
+  
+   
