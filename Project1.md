@@ -83,14 +83,16 @@ $ sudo vi /etc/apache2/sites-available/projectlamp.conf
   
 Pasted the below bare-bones configuration by hitting on i on the keyboard to enter the insert mode, and pasted the text
   
-  <VirtualHost *:80>
-    ServerName projectlamp
-    ServerAlias www.projectlamp 
-    ServerAdmin webmaster@localhost
-    DocumentRoot /var/www/projectlamp
-    ErrorLog ${APACHE_LOG_DIR}/error.log
-    CustomLog ${APACHE_LOG_DIR}/access.log combined 
-  </VirtualHost> 
+  
+    <VirtualHost *:80>
+        ServerName projectlamp
+        ServerAlias www.projectlamp 
+        ServerAdmin webmaster@localhost
+        DocumentRoot /var/www/projectlamp
+        ErrorLog ${APACHE_LOG_DIR}/error.log
+        CustomLog ${APACHE_LOG_DIR}/access.log combined 
+    </VirtualHost> 
+  
   
   ### To save and close the file, simply follow the steps below:
   
