@@ -246,6 +246,9 @@ Removed the file created using below command, as it contains sensitive informati
 
     $ sudo rm /var/www/projectlamp/index.php
 
+![test 17](https://user-images.githubusercontent.com/96151001/148604551-13997e3c-7911-4026-b8b4-7017c796940d.PNG)
+
+Refresh the page in the browser, output shows the file created has been removed.  
 
 
   
