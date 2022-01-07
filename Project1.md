@@ -39,5 +39,5 @@ The below command installs the MySQL in the server
   
 $ sudo apt install mysql-server
   
-  
+![test 6](https://user-images.githubusercontent.com/96151001/148570545-49a4dc5c-14be-4d2b-991a-aa100f1f94c2.PNG)  
 
