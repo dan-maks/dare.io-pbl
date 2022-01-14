@@ -6,54 +6,78 @@
 Updates ubuntu
 
     $ sudo apt update
+    
+![mern 1](https://user-images.githubusercontent.com/96151001/149522383-6dd7780a-ed66-4011-b4c8-732254eae399.PNG)    
    
 Upgraded ubuntu using the below command
 
     $ sudo apt upgrade
+    
+![mern 2](https://user-images.githubusercontent.com/96151001/149522411-0872d2fc-6294-4849-8c50-761c3eb9def6.PNG)    
    
 Use the below command to get the location of Node.js software from Ubuntu repositories
 
     $ curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
+    
+![mern 3](https://user-images.githubusercontent.com/96151001/149522429-4dab1c1b-dcc8-4084-8ec0-1af74e9a3c63.PNG)    
    
 Install Node.js with the command below
 
     $ sudo apt-get install -y nodejs
+    
+![mern 4](https://user-images.githubusercontent.com/96151001/149522439-09f02d0d-dafd-469d-b4d5-02dc7430cb38.PNG)    
    
 Verify the node installation with the command below
 
     $ node -v 
+    
+![mern 5](https://user-images.githubusercontent.com/96151001/149522484-a0d3660f-fd93-48ee-9c68-57dcf3c410f8.PNG)
    
 Verify the node installation with the command below
 
     $ npm -v
+    
+![mern 6](https://user-images.githubusercontent.com/96151001/149522507-30ef3bcc-36c1-42ef-8d00-8fedf23c41a0.PNG)    
+
    
 #### Application Code Setup   
    
 Create a new directory for your To-Do project
 
     $ mkdir Todo
-   
+     
 Ran the command below to verify that the Todo directory is created with ls command  
 
     $ ls
+    
+![mern 7](https://user-images.githubusercontent.com/96151001/149522521-bd8ec932-5f73-4148-ab8b-5a4b40b25e53.PNG)    
    
 Changed the current directory to the newly created one using the command below
 
     $ cd Todo
+    
+![mern 8](https://user-images.githubusercontent.com/96151001/149522544-edb02daa-0a3b-47a8-971b-57e9c01d63ce.PNG)    
    
 Use the command npm init to initialise project, so that a new file named package.json will be created. Enter several times to accept default values, then accept to write out the package.json file by typing yes.
 
     $ npm init
-   
+    
+![mern 9](https://user-images.githubusercontent.com/96151001/149522569-5761a6d5-351c-4c7f-8439-25f1bbd8365a.PNG) 
+
 Ran the command ls to confirm that you have package.json file created   
 
     $ ls
+    
+![mern 10](https://user-images.githubusercontent.com/96151001/149524673-82e29a89-6c86-4cd8-b991-28368b4c6605.PNG)    
+   
    
 #### Install ExpressJS
 
 To use express, install it using npm
 
     $ npm install express
+       
+![mern 11](https://user-images.githubusercontent.com/96151001/149524709-bd090d2f-b371-4a2e-934e-b7aa217a749e.PNG)    
    
 Create a file *index.js* with the command below 
 
@@ -63,14 +87,18 @@ Ran *ls* to confirm that the index.js file is successfully created
 
     $ ls
    
+![mern 12](https://user-images.githubusercontent.com/96151001/149524745-6645e7db-50ce-49b7-a62c-00ad413c2807.PNG) 
+
 Installs the *dotenv* module using the command below 
 
     $ npm install dotenv
-   
+    
+![mern 13](https://user-images.githubusercontent.com/96151001/149524765-02a74367-4299-476f-ad89-f39d57ab893f.PNG) 
+
 Open the index.js file with the command below
 
     $ vim index.js
-    
+
 Pasted the code below into the file and save it
 
     
@@ -95,11 +123,17 @@ Pasted the code below into the file and save it
     console.log(`Server running on port ${port}`)
     });
     
-        
+ 
+ 
+ ![mern 14](https://user-images.githubusercontent.com/96151001/149524781-deb7173f-f401-49b8-8fa8-fdfbb2592882.PNG)
+ 
+ 
  Open the terminal in the same directory as index.js file and type the below command to test if our server works
  
     $ node index.js
      
+![mern 15](https://user-images.githubusercontent.com/96151001/149524818-ed09f749-c610-4992-bab2-c3f10417c9d5.PNG)  
+  
 The output, server running on port 5000 in the terminal shows that everything goes well
 
 Created an inbound rule to open TCP port 5000 in the EC2 security group 
@@ -107,6 +141,9 @@ Created an inbound rule to open TCP port 5000 in the EC2 security group
 Open up browser and try to access the server’s Public IP or Public DNS name followed by port 5000
 
     http://<PublicIP-or-PublicDNS>:5000
+    
+![mern 16](https://user-images.githubusercontent.com/96151001/149524836-d138a785-68ae-4d0d-b8e7-f4d7595ac636.PNG) 
+
     
 #### Routes
 
@@ -130,9 +167,11 @@ Created a file api.js with the command below
 
     $ touch api.js
     
+![mern 17](https://user-images.githubusercontent.com/96151001/149524879-e7156c5f-1243-47d0-9a44-3e90c8b655f7.PNG)    
+    
 Open the file with the command below
 
-    $ vim api.js
+    $ vim api.js    
     
 Copy below code in the file
 
@@ -153,8 +192,12 @@ Copy below code in the file
     })
 
     module.exports = router;
-    
-        
+ 
+ 
+ 
+![mern 18](https://user-images.githubusercontent.com/96151001/149524901-64561be7-4391-4b39-a9f6-6605c1d87ee6.PNG)
+
+
 #### MODELS     
 
 A model is at the heart of JavaScript based applications, and it is what makes it interactive. We will also use models to define the database schema. Schema is a blueprint of how the database will be constructed, including other data fields that may not be required to be stored in the database. These are known as virtual properties
@@ -165,7 +208,10 @@ Change directory back Todo folder with *cd ..* and install Mongoose using the co
 
     $ npm install mongoose
     
+![mern 19](https://user-images.githubusercontent.com/96151001/149524920-919968eb-e47f-4837-b712-a8d880b9e8a7.PNG)
+
 Create a new folder models using the command below
+
     $ mkdir models
     
 Changed directory into the newly created ‘models’ folder with the below command
@@ -175,6 +221,8 @@ Changed directory into the newly created ‘models’ folder with the below comm
 Inside the models folder, create a file and name it todo.js
 
     $ touch todo.js
+    
+![mern 20](https://user-images.githubusercontent.com/96151001/149529603-de89a0f0-1b0c-4674-beb1-590d74a5ffef.PNG)    
     
 Tip: All three commands above can be defined in one line to be executed consequently with help of && operator, like this:
 
