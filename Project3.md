@@ -17,29 +17,25 @@ Upgraded ubuntu using the below command
    
 Use the below command to get the location of Node.js software from Ubuntu repositories
 
-    $ curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
+    $ curl -sL https://deb.nodesource.com/setup_16.x | sudo -E bash -
     
-![mern 3](https://user-images.githubusercontent.com/96151001/149522429-4dab1c1b-dcc8-4084-8ec0-1af74e9a3c63.PNG)    
-   
+![node ins](https://user-images.githubusercontent.com/96151001/156598430-c93af2b3-fbf8-4984-a301-398baa1373f5.PNG)
+              
 Install Node.js with the command below
 
     $ sudo apt-get install -y nodejs
     
-![mern 4](https://user-images.githubusercontent.com/96151001/149522439-09f02d0d-dafd-469d-b4d5-02dc7430cb38.PNG)    
-   
+![mern n1](https://user-images.githubusercontent.com/96151001/156595843-ee3ccfca-8168-465a-9ad2-ea1c5a6968b3.PNG)
+      
 Verify the node installation with the command below
 
     $ node -v 
-    
-![mern 5](https://user-images.githubusercontent.com/96151001/149522484-a0d3660f-fd93-48ee-9c68-57dcf3c410f8.PNG)
    
 Verify the node installation with the command below
 
     $ npm -v
-    
-![mern 6](https://user-images.githubusercontent.com/96151001/149522507-30ef3bcc-36c1-42ef-8d00-8fedf23c41a0.PNG)    
-
-   
+     
+     
 #### Application Code Setup   
    
 Create a new directory for your To-Do project
@@ -62,7 +58,7 @@ Use the command npm init to initialise project, so that a new file named package
 
     $ npm init
     
-![mern 9](https://user-images.githubusercontent.com/96151001/149522569-5761a6d5-351c-4c7f-8439-25f1bbd8365a.PNG) 
+![mern n2](https://user-images.githubusercontent.com/96151001/156600050-8838dd3e-67ae-4851-b7e6-3549cbcf3933.PNG)
 
 Ran the command ls to confirm that you have package.json file created   
 
@@ -125,7 +121,8 @@ Pasted the code below into the file and save it
     
  
  
- ![mern 14](https://user-images.githubusercontent.com/96151001/149524781-deb7173f-f401-49b8-8fa8-fdfbb2592882.PNG)
+ ![mern n3](https://user-images.githubusercontent.com/96151001/156601122-8b8e011a-c1c8-4c40-aa37-e56e4e48b0ae.PNG)
+
  
  
  Open the terminal in the same directory as index.js file and type the below command to test if our server works
@@ -195,7 +192,7 @@ Copy below code in the file
  
  
  
-![mern 18](https://user-images.githubusercontent.com/96151001/149524901-64561be7-4391-4b39-a9f6-6605c1d87ee6.PNG)
+![mern n4](https://user-images.githubusercontent.com/96151001/156604106-0d8f3c74-91e7-4397-acdb-8505b322475d.PNG)
 
 
 #### MODELS     
@@ -247,7 +244,11 @@ Open the file created with *vim todo.js* then paste the code below in the file
 
     module.exports = Todo;
     
-    
+  
+
+![mern n5](https://user-images.githubusercontent.com/96151001/156606333-f31a39ef-d9c2-4ece-9a75-cd1b7ea76a2b.PNG)
+
+
 Updated routes from the file *api.js* in ‘routes’ directory to make use of the new model
     
 In Routes directory, open api.js with *vim api.js*, delete the code inside with *:%d* command and paste there code below into it then save and exit
@@ -286,6 +287,10 @@ In Routes directory, open api.js with *vim api.js*, delete the code inside with 
     module.exports = router;
 
 
+
+![mern n6](https://user-images.githubusercontent.com/96151001/156596071-ab07f4ef-e213-4bfe-865e-52ddecc34946.PNG)
+
+
 #### MongoDB Database
 
 Created a MongoDB database and collection inside mLab
@@ -303,6 +308,8 @@ Add the connection string to access the database in it, just as below:
     DB = 'mongodb+srv://<username>:<password>@<network-address>/<dbname>?retryWrites=true&w=majority'
 
 Ensure to update <username>, <password>, <network-address> and <database> according to the setup
+    
+![mern n7](https://user-images.githubusercontent.com/96151001/156596160-4b34e551-97ce-405c-be72-72441523a671.PNG)    
     
 Updated the *index.js* to reflect the use of *.env* so that Node.js can connect to the database  
     
@@ -363,9 +370,19 @@ The entire content will be deleted, then,
     
     
     
+![mern n8](https://user-images.githubusercontent.com/96151001/156596200-ec22c5a1-c504-47e7-9c87-a8da5db928b2.PNG)
+    
+    
 Start your server using the command
     
     $ node index.js
+    
+I corrected the error code EADDRINUSE on server, using the procecedure described on the internet
+    
+    $ lsof -i tcp:5000
+    $ kill -9 PID
+    
+![mern n9](https://user-images.githubusercontent.com/96151001/156596230-3bd4b8aa-cd16-4bd7-94c0-a3d83cdc22b0.PNG)    
     
     
 
