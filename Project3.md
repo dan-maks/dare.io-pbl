@@ -293,7 +293,7 @@ In Routes directory, open api.js with *vim api.js*, delete the code inside with 
 
 #### MongoDB Database
 
-Created a MongoDB database and collection inside mLab
+Create a MongoDB database and collection inside mLab. mLab provides MongoDB database as a service solution (DBaaS), so to make life easy, you will need to sign up for a shared clusters free account, which is ideal for our use case. Follow the sign up process, select AWS as the cloud provider, and choose a region near you. Add network access to the database cluster,by allowing access from anywhere.
 
 ![mongo db 1](https://user-images.githubusercontent.com/96151001/161025656-62afc7b3-7d07-40ce-82cd-4c3b1ee9a65a.png)
 
