@@ -2,11 +2,11 @@
 
 # Step 0 - Preparing prerequisites
 
-in order to carry out the project, set up a virtual server with Ubuntu Server OS using the already created AWS account console we've been using in the previous projects.
+In order to carry out the project, we set up a virtual server with Ubuntu Server OS using the already created AWS account console we've been using in the previous projects.
 
 # Task 
 
-In this project we are going to implement a simple Book Register web form using MEAN stack.
+In this project, we want to implement a simple Book Register web form using MEAN stack.
 
 # Step 1 - Install NodeJs
 
@@ -55,7 +55,7 @@ Start The server
 
     $ sudo service mongodb start
     
-Verify that the service is up and running
+Verify that the server is up and running
  
     $ sudo systemctl status mongodb
     
@@ -337,7 +337,7 @@ Start the server by running this command:
     
 ![mean 23](https://user-images.githubusercontent.com/96151001/161756705-fd3399d1-cec4-4cec-af61-adfd24577c59.PNG)
     
-The server is now up and running, we can connect it via port 3300. You can launch a separate Putty or SSH console to test what curl command returns locally.
+The server is now up and running, we can connect it via port 3300. We can launch a separate Putty or SSH console to test what curl command returns locally.
 
     $ curl -s http://localhost:3300       
     
