@@ -226,7 +226,7 @@ Test the configuration
 
 ![md 35](https://user-images.githubusercontent.com/96151001/162949305-07e13087-3ad6-4318-842e-54792004c1e3.png)
 
-Reload the daemon
+Reload the daemon:
 
       $ sudo systemctl daemon-reload
 
@@ -281,7 +281,7 @@ Install lvm2 package
       
 ![md 44](https://user-images.githubusercontent.com/96151001/162958204-3df79183-c07f-4045-9826-51a97aced266.png)
 
-Use pvcreate utility to mark each of 3 disks as physical volumes (PVs) to be used by LVM
+Use pvcreate utility to mark each of 3 disks as physical volumes (PVs) to be used by LVM.
 
       $ sudo pvcreate /dev/xvdf1 /dev/xvdg1 /dev/xvdh1
 
@@ -291,7 +291,7 @@ Use vgcreate utility to add all 3 PVs to a volume group (VG). Name it vg-databas
 
       $ sudo vgcreate vg-database /dev/xvdf1 /dev/xvdg1 /dev/xvdh1   
 
-Verify that VG has been created successfully
+Verify that VG has been created successfully.
 
       $ sudo vgs
       
@@ -303,23 +303,23 @@ Use lvcreate utility to create 1 logical volume. db-lv
 
 ![md 47](https://user-images.githubusercontent.com/96151001/162959019-19b8fb7b-70b0-484f-befd-a18a417e8b14.png)
 
-Create mount points
+Create mount points.
 
       $ sudo mkdir /db
       
-Add the filesystem  
+Add the filesystem.  
 
       $ sudo mkfs.ext4 /dev/vg-database/db-lv
       
 ![md 48](https://user-images.githubusercontent.com/96151001/162959116-7062293e-a778-49d3-ab67-4fa48a5fc5a2.png)
 
-confirm that /db is empty
+Confirm that /db is empty.
 
       $ sudo ls -l /db
      
 ![md 49](https://user-images.githubusercontent.com/96151001/162962241-91de1f4a-3efe-4c1c-ab36-22d0660e50f3.png)
 
-Mount /db on db-lv logical volume
+Mount /db on db-lv logical volume.
 
       $ sudo mount /dev/vg-database/db-lv /db
 
@@ -657,7 +657,7 @@ Restart mysqld:
 
       $ sudo systemctl restart mysqld
 
-on the web server, update the wp-config.php
+on the web server, update the wp-config.php.
 
       $ sudo vi wp-config.php
       
@@ -665,18 +665,70 @@ on the web server, update the wp-config.php
       
 Restart mysqld on the web server
 
-      $ sudo systemctl restart mysqld
+      $ sudo systemctl restart httpd
+
+Disable the test page of Apache, so as to be able to view wordpress on the browser
+
+      $ sudo mv /etc/httpd/conf.d/welcome.conf /etc/httpd/conf.d/welcome.conf_backup
+      
+![wd 75](https://user-images.githubusercontent.com/96151001/162984270-cfd57c75-089e-4140-83c3-742c4a639033.png)-
 
 
+# Step 6 — Configure WordPress to connect to remote database.
+
+Hint: Do not forget to open MySQL port 3306 on DB Server EC2. For extra security, you shall allow access to the DB server ONLY from your Web Server’s IP address, so in the Inbound Rule configuration specify source as /32. Alhough all traffic was used in this project.
+
+
+Ensure that our web server can actually commmunicate with our database server
+
+      $ sudo mysql -h <private ip> -u wordpress -p
       
+Enter the password
+
+Verify if you can successfully execute SHOW DATABASES; command and see a list of existing databases.
+
+      mysql> show databases;
+
+![wd 76](https://user-images.githubusercontent.com/96151001/162984318-d5804442-5279-4590-b7d6-44e1a53e59ff.png)
+
+Change permissions and configuration so Apache could use WordPress:
       
+      $ sudo chown -R apache:apache /var/www/html
+
+Check out the directory to confirm
+
+      $ ls -l
+      
+![wd 77](https://user-images.githubusercontent.com/96151001/162984382-e3b52f9d-5870-4100-9978-0ce55c9aa069.png)
+ 
+continue with configuration
+
+      $ sudo chcon -t httpd_sys_rw_content_t /var/www/html/ -R 
+      
+ Allow to connect webserver
+ 
+      $ sudo setsebool -P httpd_can_network_connect=1
+    
+Allow to connect to database too.
+
+      $ sudo setsebool -P httpd_can_network_connect_db 1
+
+![wd 78](https://user-images.githubusercontent.com/96151001/162984453-df51569b-ed0a-46bf-838a-4997c6906f8c.png)
+
+Reload the test apache page on the browser after all the configuration.
+
+Fill out your DB credentials:
+
+Run the installation on the browser.
+
+![wd 79](https://user-images.githubusercontent.com/96151001/162984479-1bbbb73f-24b9-4f29-a0f1-e1d96cdfbc34.png)
+
+Log in,to view the wordpress website
+
+![wd success](https://user-images.githubusercontent.com/96151001/162984528-ef4df6aa-968f-46fe-8003-916f882c5bb2.png)
 
 
 
-      
-      
-      
-      
       
       
       
