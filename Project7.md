@@ -108,7 +108,7 @@ Make directories /mnt/apps, /mnt/logs, /mnt/opt.
      
       $ sudo mkdir mnt/opt
 
-Create mount points on /mnt directory for the logical volumes as follow:
+Create mount points on /mnt directory for the logical volumes as follows:
 
 Mount lv-apps on /mnt/apps – To be used by webservers
      
@@ -125,7 +125,7 @@ Mount lv-opt on /mnt/opt – To be used by Jenkins server in Project 8
 ![p7 12](https://user-images.githubusercontent.com/96151001/165112425-595a5f79-c56c-42cc-bec2-7e9edf022235.png)
 
 
-Install NFS server, run the below code first
+Install NFS server, first update the instance.
 
       $ sudo yum -y update
 
@@ -165,11 +165,11 @@ Make sure we set up permission that will allow our Web servers to read, write an
 
 ![p7 18](https://user-images.githubusercontent.com/96151001/165141488-541822c9-8875-40f3-b87a-dd8b403a75e8.png)
 
-Configure access to NFS for clients within the same subnet 
+Configure access to NFS for clients within the same subnet. 
 
       $ sudo vi /etc/exports
       
-Populate the file
+Populate the file.
 
       /mnt/apps <Subnet-CIDR>(rw,sync,no_all_squash,no_root_squash)
       /mnt/logs <Subnet-CIDR>(rw,sync,no_all_squash,no_root_squash)
@@ -190,9 +190,7 @@ Important note: In order for NFS server to be accessible from your client, you m
 
 ## Step 2 — Configure the Database Server 
 
-Connect to the server using ssh
-
-Update the ubuntu instance
+Connect to the server using ssh. Update the ubuntu instance.
 
       $ sudo apt update
 
@@ -218,7 +216,7 @@ Flush privileges.
       
       mysql> FLUSH PRIVILEGES;
 
-show databases.
+Show databases.
 
       mysql> SHOW DATABASES;
 
@@ -251,7 +249,7 @@ During the next steps we will do following:
 - Deploy a Tooling application to our Web Servers into a shared NFS folder
 - Configure the Web Servers to work with a single MySQL database
 
-Launch a new EC2 instance with RHEL 8 Operating System
+Launch a new EC2 instance with RHEL 8 Operating System. 3 webservers will be configured simultaneously.
 
 Install NFS client.
 
@@ -269,7 +267,7 @@ Verify that NFS was mounted successfully by running df -h.
       
       $ df -h
       
-Test if the the webservr and nfs server can communicate. 
+Test if the the webservers and nfs server can communicate. 
 
       $ sudo touch /var/www/test.md
 
@@ -287,7 +285,7 @@ Make sure that the changes will persist on Web Server after reboot:
       
 add following line:    
 
-      $ <NFS-Server-Private-IP-Address>:/mnt/apps /var/www nfs defaults 0 0
+      <NFS-Server-Private-IP-Address>:/mnt/apps /var/www nfs defaults 0 0
 
 ![p7 23](https://user-images.githubusercontent.com/96151001/165141634-bba42655-bf49-40a5-91c3-c5597295f7d6.png)
 
@@ -305,7 +303,7 @@ Verify that Apache files and directories are available on the Web Server in /var
 
 If you see the same files – it means NFS is mounted correctly.
 
-Locate the log folder for Apache on the Web Server and mount it to NFS server’s export for logs
+Locate the log folder for Apache on the Web Servers and mount it to NFS server’s export for logs
 
       $ ls /var/log
       
@@ -313,7 +311,7 @@ Locate the log folder for Apache on the Web Server and mount it to NFS server’
       
 ![p7 26](https://user-images.githubusercontent.com/96151001/165141713-ea87bab0-5ef7-4df4-aecc-a17136e9d385.png)      
 
-Make sure the mount point will persist after reboot
+Make sure the mount points will persist after reboot
 
       $ sudo vi /etc/fstab
       
@@ -327,7 +325,7 @@ Fork the tooling source code from Darey.io Github Account to your Github account
       
       $ git clone https://github.com/darey-io/tooling.git
       
-Check the content of the repository
+Check the content of the repository.
 
        $ ls
        
@@ -335,11 +333,11 @@ move to the file
        
        $ cd tooling/
        
-check tooling/ content
+Check tooling/ content
 
        $ ls
          
-Deploy the tooling website’s code to the Webserver. Ensure that the html folder from the repository is deployed to /var/www/html  
+Deploy the tooling website’s code to the Webservers. Ensure that the html folder from the repository is deployed to /var/www/html  
 
        $ ls /var/www
        
@@ -353,7 +351,7 @@ Confirm the process.
        
 ![p7 27](https://user-images.githubusercontent.com/96151001/165141735-b408a474-6bfb-4787-9db8-bcee672ae84b.png)      
 
-Note 1: Do not forget to open TCP port 80 on the Web Server.
+Note 1: Do not forget to open TCP port 80 on the Web Servers.
 
 Note 2: If you encounter 403 Error – check permissions to your /var/www/html folder and also disable SELinux 
 
@@ -373,7 +371,7 @@ Set SELINUX=disabled then restrt httpd.
        
 ![p7 30](https://user-images.githubusercontent.com/96151001/165141847-92160083-aebb-4a16-b3ac-8ea7f241c8c4.png)
        
-Using the webserver public IP address, load the apache test page
+Using the webservers public IP address, load the apache test page
 
 ![p7 29](https://user-images.githubusercontent.com/96151001/165141801-39e520d1-4421-4bc5-bb04-d3793d81cb0a.png)
        
@@ -395,21 +393,29 @@ Open the mysql configuration file and update the bind address to 0.0.0.0
        
 ![p7 33](https://user-images.githubusercontent.com/96151001/165141945-5589e20d-a058-414d-ba96-c50c26de2e67.png)
 
-Retsart mysql and check the status
+Restart mysql and check the status
 
        $ sudo systemctl restart mysql
        
        $ sudo systemctl status mysql
-       
+
+![p7 34](https://user-images.githubusercontent.com/96151001/165177784-9bbf9557-a6d0-4bb9-a30f-1c5fc7aa3811.png)
+
 Apply tooling-db.sql script to your database.
 
        $ mysql -h <database-private-ip> -u <db-username> -p tooling < tooling-db.sql
-       
-check out tooling-db.sql file 
+
+![p7 35](https://user-images.githubusercontent.com/96151001/165177800-33de975b-8978-4c6b-8d6f-bc9483308e1d.png)
+
+Check out tooling-db.sql file 
 
        $ sudo vi tooling-db.sql
-       
-on the database server, start mysql
+
+![p7 37](https://user-images.githubusercontent.com/96151001/165177846-58534251-328c-4b11-bd5c-62aa66cf546c.png)
+
+![p7 36](https://user-images.githubusercontent.com/96151001/165177816-48661e34-127d-416a-a283-fa5b953b1240.png)
+
+On the database server, open mysql.
 
        S sudo mysql
        
@@ -422,36 +428,57 @@ on the database server, start mysql
        mysql> select * from users;
        
        mysql> exit;
-       
-Back on the webserver, check out the apache test page
+
+
+![p7 38](https://user-images.githubusercontent.com/96151001/165177865-582a7574-7714-4211-85a5-69707a320c30.png)
+
+Back on the webservers, check out the apache test page
 
        $ sudo vi /etc/httpd/conf.d/welcome.conf /etc/httpd/conf.d/welcome.backup
        
 Rename the default page
 
        $ sudo mv /etc/httpd/conf.d/welcome.conf /etc/httpd/conf.d/welcome.backup
-   
+
+![p7 39](https://user-images.githubusercontent.com/96151001/165177878-69482714-e113-4b81-aefb-f839590a1f75.png)
+
 Retsart httpd and check the status
 
        $ sudo systemctl restart httpd
        
        $ sudo systemctl status httpd
-       
-Reload the test page on browser       
-       
-Install PHP dependencies so as to display the html format seen  
 
-Install Remi's repository      
+![p7 40](https://user-images.githubusercontent.com/96151001/165177911-aa8d7533-b635-4bee-b92d-2b8d2536a0d5.png)
+
+Reload the apache test page on browser.       
+
+![p7 41](https://user-images.githubusercontent.com/96151001/165177932-9e660663-93dc-4486-bebe-985481e6d4fb.png)
+
+Install PHP dependencies so as to display the html format seen to end users.     
 
       $ sudo dnf install https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
+      
+![p7 42](https://user-images.githubusercontent.com/96151001/165177951-4b3b5548-b235-499d-afdc-d8790cb08188.png)      
 
       $ sudo dnf install dnf-utils http://rpms.remirepo.net/enterprise/remi-release-8.rpm
 
+![p7 43](https://user-images.githubusercontent.com/96151001/165177975-f96b2eee-69cd-4b91-884b-a23252c061dc.png)
+
+      $ sudo dnf module list php
+
+![p7 44](https://user-images.githubusercontent.com/96151001/165177999-a472d610-56ca-480c-a9ca-2fbbd5412d6a.png)
+
       $ sudo dnf module reset php
+
+![p7 45](https://user-images.githubusercontent.com/96151001/165178245-7442cec2-3ef5-4b55-8abb-7e2be2f98ddf.png)
 
       $ sudo dnf module enable php:remi-7.4
 
+![p7 46](https://user-images.githubusercontent.com/96151001/165178266-e0058d0e-8df9-45b7-a4f2-e1f785417007.png)
+
       $ sudo dnf install php php-opcache php-gd php-curl php-mysqlnd
+
+![p7 47](https://user-images.githubusercontent.com/96151001/165178298-541bd1d8-402d-47c2-90a0-49c5a5dc95c3.png)
 
       $ sudo systemctl start php-fpm
 
@@ -460,15 +487,25 @@ Install Remi's repository
       $ sudo setsebool -P httpd_execmem 1
       
       $ sudo systemctl restart httpd
-      
+  
 
-Reload the html page after completion.
+![p7 49](https://user-images.githubusercontent.com/96151001/165178358-d90484d5-d8e7-46c2-a029-8f310c9ca485.png)
 
-Enter username and password (admin) to login to the tooling website
+
+Reload the html pages after completion.
+
+![p7 48](https://user-images.githubusercontent.com/96151001/165178324-61eb5453-ac92-4f8b-80b4-5987de2c9f12.png)
+
+Enter username and password (admin) to login to the tooling websites
    
-      
+![p7 51](https://user-images.githubusercontent.com/96151001/165178617-13ab9ca7-8879-410c-9f60-d1f5d6c37999.png)
 
-    
+![p7 c10](https://user-images.githubusercontent.com/96151001/165178700-561e1acd-64c7-4577-8fa9-c34f5b8837eb.png)
+
+![p7 c11](https://user-images.githubusercontent.com/96151001/165178728-40d2baed-bf8f-4007-8936-ceb4e778b2ed.png)
+     
+
+Able to login to the tooling website on the the 3 webservers, using their public IP or Public DNS addresses.
 
 
 
