@@ -317,7 +317,7 @@ Make sure the mount points will persist after reboot
       
 Add the following line:
 
-      $ <NFS-Server-Private-IP-Address>:/mnt/logs /var/log/httpd nfs defaults 0 0
+      <NFS-Server-Private-IP-Address>:/mnt/logs /var/log/httpd nfs defaults 0 0
 
 Fork the tooling source code from Darey.io Github Account to your Github account
 
@@ -329,7 +329,7 @@ Check the content of the repository.
 
        $ ls
        
-move to the file
+move to the file.
        
        $ cd tooling/
        
