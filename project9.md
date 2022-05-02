@@ -95,17 +95,23 @@ Configure triggering the job from GitHub webhook:
 Configure "Post-build Actions" to archive all the files – files resulted from a build are called "artifacts".
   
 Now, go ahead and make some change in any file in your GitHub repository (e.g. README.MD file) and push the changes to the master branch.
-  
+
+![p9 18](https://user-images.githubusercontent.com/96151001/166227753-8b531624-cd0d-4e6e-bce1-68413988cd47.png)
+     
 You will see that a new build has been launched automatically (by webhook) and you can see its results – artifacts, saved on Jenkins server.
 
-![p9 15](https://user-images.githubusercontent.com/96151001/166061798-c958cf39-43dc-47a3-ae31-507b5b9a7b50.png)
+![p9 17](https://user-images.githubusercontent.com/96151001/166227735-741a7839-d9f3-45c4-86eb-9866781e8125.png)
     
 You have now configured an automated Jenkins job that receives files from GitHub by webhook trigger (this method is considered as ‘push’ because the changes are being ‘pushed’ and files transfer is initiated by GitHub). There are also other methods: trigger one job (downstreadm) from another (upstream), poll GitHub periodically and others.
 
+![p9 19](https://user-images.githubusercontent.com/96151001/166227771-8733da18-5dd5-43a0-95a4-26f2c6c24d83.png)
+     
 By default, the artifacts are stored on Jenkins server locally
 
      $ ls /var/lib/jenkins/jobs/tooling_github/builds/<build_number>/archive/  
-  
+
+![p9 20](https://user-images.githubusercontent.com/96151001/166227804-ab3ebdb5-bde8-47e3-9ae8-b2f7408ff7a9.png)
+     
 Step 3 – Configure Jenkins to copy files to NFS server via SSH
   
 Now we have our artifacts saved locally on Jenkins server, the next step is to copy them to our NFS server to /mnt/apps directory.
@@ -113,11 +119,13 @@ Now we have our artifacts saved locally on Jenkins server, the next step is to c
 Jenkins is a highly extendable application and there are 1400+ plugins available. We will need a plugin that is called "Publish Over SSH".
   
 Install "Publish Over SSH" plugin.
-  
+     
 On main dashboard select "Manage Jenkins" and choose "Manage Plugins" menu item.
 
 On "Available" tab search for "Publish Over SSH" plugin and install it  
   
+![p9 21](https://user-images.githubusercontent.com/96151001/166227821-12a72e15-2588-42ca-88bc-5c62c1f63c9a.png)
+     
 Configure the job/project to copy artifacts over to NFS server.
   
 On main dashboard select "Manage Jenkins" and choose "Configure System" menu item.
@@ -129,28 +137,45 @@ Scroll down to Publish over SSH plugin configuration section and configure it to
 3. Hostname – can be private IP address of your NFS server
 4. Username – ec2-user (since NFS server is based on EC2 with RHEL 8)
 5. Remote directory – /mnt/apps since our Web Servers use it as a mointing point to retrieve files from the NFS server
-  
-  
+    
 Test the configuration and make sure the connection returns Success. Remember, that TCP port 22 on NFS server must be open to receive SSH connections.
 
+![p9 23](https://user-images.githubusercontent.com/96151001/166227878-73a3ba15-e778-4fe3-80bf-ab5d978478cf.png)
+     
 Save the configuration, open your Jenkins job/project configuration page and add another one "Post-build Action"
 
 Configure it to send all files probuced by the build into our previouslys define remote directory. In our case we want to copy all files and directories – so we use **.
-  
+
+![p9 24](https://user-images.githubusercontent.com/96151001/166227915-7d14c162-872e-4cdd-bc07-846996de5018.png)
+     
 Save this configuration and go ahead, change something in README.MD file in your GitHub Tooling repository.
 
+We have to change ownership and mode of our /mnt/apps so that our congiguration can work
+     
+     $ sudo chmod 777 /mnt/apps
+     
+     $ sudo chown nobody:nobody /mnt/apps
+
+![p9 26](https://user-images.githubusercontent.com/96151001/166227953-dcc61094-6fdb-482f-a973-f21a9847a8ca.png)     
+     
 Webhook will trigger a new job and in the "Console Output" of the job you will find something like this:
 
      SSH: Transferred 25 file(s)
      Finished: SUCCESS  
-  
+
+![p9 27](https://user-images.githubusercontent.com/96151001/166227968-b5c7b0eb-f517-47ec-9d3b-a22eb2c7efd7.png)
+     
 To make sure that the files in /mnt/apps have been updated – connect via SSH/Putty to your NFS server and check README.MD file
 
      $ cat /mnt/apps/README.md  
-  
-If you see the changes you had previously made in your GitHub – the job works as expected.  
-  
-  
+
+![p9 29](https://user-images.githubusercontent.com/96151001/166228010-3b18446b-a298-4296-8977-2b197de3406a.png)     
+     
+![p9 30](https://user-images.githubusercontent.com/96151001/166228031-c9654fb0-2755-4241-adda-ccd96f266769.png)
+     
+If you see the changes you had previously made in your GitHub – the job works as expected. 
+     
+![p9 31](https://user-images.githubusercontent.com/96151001/166228046-fe60761e-938e-41ef-8b16-352d154846fc.png)      
   
   
   
